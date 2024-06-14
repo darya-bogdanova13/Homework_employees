@@ -13,12 +13,12 @@ public interface EmployeeService {
         Employee remove(String firstName, String lastName, int dept, int salary);
 
         Employee find(String firstName, String lastName, int dept, int salary);
-        Employee maxSalary(String firstName, String lastName, int salary, int department);
-        Employee minSalary(String firstName, String lastName, int salary, int department);
+        Employee findEmployeeWithMaxSalaryFromDept(String firstName, String lastName, int salary, int department);
+        Employee findEmployeeWithMinSalaryFromDept(String firstName, String lastName, int salary, int dept);
         Collection<Employee> findAll();
-        Collection<Employee> maxSalary();
-        Collection<Employee> minSalary();
+        Collection<Employee> findEmployeeWithMaxSalaryFromDept();
+        Collection<Employee> findEmployeeWithMinSalaryFromDept();
         List<Employee> list();
-        void remove(String firstName, String lastName);
+        Employee remove(String firstName, String lastName);
         Employee find(String firstName, String lastName);
 }

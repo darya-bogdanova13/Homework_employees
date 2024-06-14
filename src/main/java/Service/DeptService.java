@@ -6,14 +6,17 @@ import java.util.List;
 import java.util.Map;
 
 public interface DeptService {
-    public List <Employee> getAllDept (int dept);
-    public Map <Integer, List <Employee>> getAll(int dept);
-    List <Employee> getEmployees (int i);
-    Map<Integer, List<Employee>> getAll();
+    List <Employee> getEmployees(int i);
 
-    Employee getMaxSalary (int dept);
+    Map<Integer, List <Employee>> getAll();
 
-    Employee getMinSalary (int dept);
+    List<Employee> findEmployeesFromDept(int dept);
+    Map<Integer, List<Employee>> groupEmployeesByDept();
+
+    Employee findEmployeeWithMinSalaryFromDepartment(int dept);
+
+    Employee findEmployeeWithMinSalaryFromDept(int dept);
+    Employee findEmployeeWithMaxSalaryFromDept(int dept);
 
 }
 

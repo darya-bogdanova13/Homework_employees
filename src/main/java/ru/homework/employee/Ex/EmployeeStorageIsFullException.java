@@ -7,6 +7,5 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class EmployeeStorageIsFullException extends RuntimeException{
     public EmployeeStorageIsFullException(String ArraysIsFull){
         super(ArraysIsFull);
-        System.out.println("Storage is full");
     }
 }

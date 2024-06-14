@@ -8,7 +8,8 @@ import ru.homework.employee.Ex.EmployeeNotFoundException;
 import java.util.*;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService {
+public abstract class EmployeeServiceImpl implements EmployeeService {
+    private final int STORAGE_SIZE = 5;
     private final Map<String, Employee> employees;
     public EmployeeServiceImpl() {
         this.employees = new HashMap<>();
@@ -28,11 +29,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.employeeList = employeeList;
     }
     @Override
-    public Employee maxSalary(String firstName, String lastName, int salary, int department) {
+    public Employee findEmployeeWithMaxSalaryFromDept(String firstName, String lastName, int salary, int department) {
         return null;
     }
     @Override
-    public Employee minSalary(String firstName, String lastName, int salary, int department) {
+    public Employee findEmployeeWithMinSalaryFromDept(String firstName, String lastName, int salary, int department) {
         return null;
     }
     @Override
@@ -66,11 +67,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return Collections.unmodifiableCollection(employees.values());
     }
     @Override
-    public Collection<Employee> maxSalary() {
+    public Collection<Employee> findEmployeeWithMaxSalaryFromDept() {
         return null;
     }
     @Override
-    public Collection<Employee> minSalary(){
+    public Collection<Employee> findEmployeeWithMinSalaryFromDept(){
         return null;
     }
     @Override
@@ -78,7 +79,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return null;
     }
     @Override
-    public void remove(String firstName, String lastName) {
+    public Employee remove(String firstName, String lastName) {
+        return null;
     }
     @Override
     public Employee find(String firstName, String lastName) {

@@ -11,7 +11,11 @@ public class CompanyEmployees implements CommandLineRunner {
   @Autowired
   private EmployeeService employeeService;
 
-  @Override
+    public CompanyEmployees(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+    @Override
     public void run(String... args) throws Exception {
       employeeService.add("Вадим", " Безрукавый", 50000, 1 );
               employeeService.add("Алексей", " Коток", 90000, 2);

@@ -1,7 +1,6 @@
 package ru.homework.employee.Cont;
 
 import Service.DeptService;
-import Service.EmployeeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.homework.employee.Employee;
@@ -18,17 +17,17 @@ public class DeptController {
     @GetMapping ("/all")
     public ResponseEntity<?> getAllDept(@RequestParam(required = false) Integer dept) {
         return dept == null ?
-                ResponseEntity.ok(service.getAll()):
-                ResponseEntity.ok((service.getAllDept(dept)));
+                ResponseEntity.ok(service.groupEmployeesByDept()):
+                ResponseEntity.ok((service.findEmployeesFromDept(dept)));
     }
 
     @GetMapping("/maxSalary")
     public Employee getMaxSalary(@RequestParam Integer dept) {
-        return service.getMaxSalary(dept);
+        return service.findEmployeeWithMaxSalaryFromDept(dept);
     }
 
     @GetMapping("/minSalary")
     public Employee getMinSalary(@RequestParam Integer dept) {
-        return service.getMinSalary(dept);
+        return service.findEmployeeWithMinSalaryFromDept(dept);
     }
 }

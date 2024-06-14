@@ -9,41 +9,45 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static java.util.Arrays.stream;
+import static java.util.Collections.min;
+import static java.util.Locale.filter;
+
 @Service
 public class DeptServiceImpl implements DeptService {
-    private final EmployeeServiceImpl employeeServiceImpl;
+    private final EmployeeService employeeServiceImpl;
 
     public DeptServiceImpl(EmployeeService employeeServiceImpl) {
 
-        this.employeeServiceImpl = (EmployeeServiceImpl) employeeServiceImpl;
+        this.employeeServiceImpl = employeeServiceImpl;
     }
-    public List<Employee> getAllDept (int dept) {
+    public List<Employee> findEmployeesFromDepartment (int dept) {
         return employeeServiceImpl.findAll()
                 .stream()
                 .filter(employee -> employee.getDept() == dept)
                 .collect(Collectors.toList());
     }
     public Map <String, Employee> employees;
-    @Override
-    public Map<Integer, List<Employee>> getAll(int dep) {
+    public Map<Integer, List<Employee>>  groupEmployeesByDepartment() {
         return null;
     }
     @Override
-    public Employee getMaxSalary(int dept) {
-        return employeeServiceImpl.getEmployees().values()
+    public Employee findEmployeeWithMinSalaryFromDepartment(int dept) {
+        return employeeServiceImpl.findEmployeeWithMaxSalaryFromDept()
                 .stream()
                 .filter(employee -> employee.getDept() == dept)
                 .max(Comparator.comparing(Employee::getSalary))
                 .orElseThrow();
     }
     @Override
-    public Employee getMinSalary(int dept) {
-        return employeeServiceImpl.getEmployees().values()
+    public Employee findEmployeeWithMinSalaryFromDept(int dept) {
+        return employeeServiceImpl.findEmployeeWithMinSalaryFromDept()
                 .stream()
                 .filter(employee -> employee.getDept() == dept)
                 .min(Comparator.comparing(Employee::getSalary))
                 .orElseThrow();
     }
+
     @Override
     public List <Employee> getEmployees(int i) {
         return null;
@@ -53,5 +57,21 @@ public class DeptServiceImpl implements DeptService {
         return employeeServiceImpl.findAll()
                 .stream()
                 .collect(Collectors.groupingBy(Employee::getDept));
+    }
+
+    @Override
+    public List<Employee> findEmployeesFromDept(int dept) {
+        return null;
+    }
+
+    @Override
+    public Map<Integer, List<Employee>> groupEmployeesByDept() {
+        return null;
+    }
+
+
+    @Override
+    public Employee findEmployeeWithMaxSalaryFromDept(int dept) {
+        return null;
     }
 }
