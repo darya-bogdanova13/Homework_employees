@@ -8,33 +8,36 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.homework.employee.Employee;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
-    private final EmployeeService service;
 
-    public EmployeeController(EmployeeService service) {
-        this.service = service;
+    private final EmployeeService employeeService;
+
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
-    @GetMapping("/add")
-    public Employee addEmployee(@RequestParam String firstName, @RequestParam String lastName, @RequestParam int dept, @RequestParam int salary) {
-        return service.add(firstName, lastName, dept, salary);
+    @GetMapping("/min-salary")
+    public Employee findEmployeeWithMinSalaryFromDept(int deptId) {
+        return employeeService.findEmployeeWithMinSalaryFromDept(deptId);
     }
 
-    @GetMapping("/remove")
-    public Employee removeEmployee(@RequestParam String firstName, @RequestParam String lastName) {
-        return service.remove(firstName, lastName);
+    @GetMapping("/max-salary")
+    public Employee findEmployeeWithMaxSalaryFromDept(int deptId) {
+        return employeeService.findEmployeeWithMaxSalaryFromDept(deptId);
     }
 
-    @GetMapping("/find")
-    public Employee findEmployee(@RequestParam String firstName, @RequestParam String lastName) {
-        return service.find(firstName, lastName);
+    @GetMapping("/all")
+    public List<Employee> getAllEmployees(int deptId) {
+        return employeeService.getAllEmployees(deptId);
     }
 
-    @GetMapping(path = "/collection")
-    public Collection<Employee> finAllEmplopyee () {
-        return service.findAll();
+    @GetMapping("/all-gr")
+    public Map<Integer, List<Employee>> getAllEmployeesGroupedByDept() {
+        return employeeService.getAllEmployeesGroupedByDept();
     }
 }
