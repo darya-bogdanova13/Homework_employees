@@ -1,33 +1,41 @@
 package ru.homework.employee.Cont;
 
 import Service.DeptService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.homework.employee.Employee;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
-@RequestMapping ("/dept")
-
+@RequestMapping("/employee")
 public class DeptController {
-    private final DeptService service;
-    public DeptController(DeptService service) {
-    this.service = service;
+
+    private final DeptService deptService;
+
+    public DeptController(DeptService deptService) {
+        this.deptService = deptService;
     }
 
-    @GetMapping ("/all")
-    public ResponseEntity<?> getAllDept(@RequestParam(required = false) Integer dept) {
-        return dept == null ?
-                ResponseEntity.ok(service.groupEmployeesByDept()):
-                ResponseEntity.ok((service.findEmployeesFromDept(dept)));
+    @GetMapping("/min-salary")
+    public Employee findEmployeeWithMinSalaryFromDept(int deptId) {
+        return deptService.findEmployeeWithMinSalaryFromDept(deptId);
     }
 
-    @GetMapping("/maxSalary")
-    public Employee getMaxSalary(@RequestParam Integer dept) {
-        return service.findEmployeeWithMaxSalaryFromDept(dept);
+    @GetMapping("/max-salary")
+    public Employee findEmployeeWithMaxSalaryFromDept(int deptId) {
+        return deptService.findEmployeeWithMaxSalaryFromDept(deptId);
     }
 
-    @GetMapping("/minSalary")
-    public Employee getMinSalary(@RequestParam Integer dept) {
-        return service.findEmployeeWithMinSalaryFromDept(dept);
+    @GetMapping("/all")
+    public List<Employee> getAllEmployees(int deptId) {
+        return deptService.getAllEmployees(deptId);
+    }
+
+    @GetMapping("/all-gr")
+    public Map<Integer, List<Employee>> getAllEmployeesGroupedByDept() {
+        return deptService.getAllEmployeesGroupedByDept();
     }
 }
