@@ -1,4 +1,4 @@
-package ru.homework.employee;
+package ru.homework.employee.model;
 import java.util.Objects;
 
 public class Employee {
@@ -15,8 +15,12 @@ public class Employee {
         this.salary = salary;
     }
 
+
     public String getFistName() {
         return fistName;
+    }
+    public String getLastName() {
+        return lastName;
     }
     public int getDept() {
         return dept;
@@ -24,10 +28,6 @@ public class Employee {
 
     public int getSalary() {
         return salary;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     public String getFullName() {
