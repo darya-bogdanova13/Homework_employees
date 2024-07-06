@@ -1,11 +1,12 @@
 package ru.homework.employee.cont;
 
-import ru.homework.employee.service.DeptService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.homework.employee.model.Employee;
+import ru.homework.employee.service.DeptService;
 
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,7 @@ import java.util.Map;
 public class DeptController {
 
     private final DeptService service;
-
+    @Autowired
     public DeptController(DeptService service) {
         this.service = service;
     }
@@ -32,7 +33,7 @@ public class DeptController {
 
 
     @GetMapping(path = "/all", params = "deptId")
-    public List<Employee> getAllEmployeesGroupedByDep(@RequestParam int deptId) {
+    public List<Employee> getAllEmployeesGroupedByDept(@RequestParam int deptId) {
         return service.getAll(deptId);
     }
 

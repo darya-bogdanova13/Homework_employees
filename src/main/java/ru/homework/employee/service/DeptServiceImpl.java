@@ -4,14 +4,15 @@ package ru.homework.employee.service;
 import org.springframework.stereotype.Service;
 import ru.homework.employee.model.Employee;
 
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+
 @Service
 public class DeptServiceImpl implements DeptService{
+
     private final EmployeeService employeeService;
 
     public DeptServiceImpl(EmployeeService employeeService) {

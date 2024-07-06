@@ -13,5 +13,9 @@ public interface EmployeeService {
     Employee find(String firstName, String lastName);
 
     List<Employee> findAll();
+
+    static Employee createEmployee(String firstName, String lastName, int dept, int salary) {
+        return null;
+    }
 }
 
