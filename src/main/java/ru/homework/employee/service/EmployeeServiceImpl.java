@@ -27,7 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employees.put("Сотрудник 2", new Employee("Алексей", "Корников",1, 70000));
         employees.put("Сотрудник 3", new Employee("Константин", "Реунов", 1, 90000));
         employees.put("Сотрудник 4", new Employee("Андрей", "Постов", 2, 70000));
-        employees.put("Сотрудник 5", new Employee("Чугунов1", "Сергей", 3, 70000));
+        employees.put("Сотрудник 5", new Employee("Чугунов2", "Сергей", 3, 70000));
     }
 
     @Override
