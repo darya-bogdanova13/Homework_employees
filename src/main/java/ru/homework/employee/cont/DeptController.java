@@ -1,10 +1,7 @@
 package ru.homework.employee.cont;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.homework.employee.model.Employee;
 import ru.homework.employee.service.DeptService;
 
@@ -21,24 +18,28 @@ public class DeptController {
         this.service = service;
     }
 
-    @GetMapping("/min-salary")
-    public Employee findEmployeeWithMinSalaryFromDept(@RequestParam int dept) {
+    @GetMapping("{id}/min-salary")
+    public Employee findEmployeeWithMinSalaryFromDept(@PathVariable("id") int dept) {
         return service.findEmployeeWithMinSalaryFromDept(dept);
     }
 
-    @GetMapping("/max-salary")
-    public Employee findEmployeeWithMaxSalaryFromDept(@RequestParam int dept) {
+    @GetMapping("{id}/max-salary")
+    public Employee findEmployeeWithMaxSalaryFromDept(@PathVariable("id") int dept) {
         return service.findEmployeeWithMaxSalaryFromDept(dept);
     }
 
 
-    @GetMapping(path = "/all", params = "deptId")
-    public List<Employee> getAllEmployeesGroupedByDept(@RequestParam int deptId) {
+    @GetMapping(path = "{id}/all", params = "{id}/deptId")
+    public List<Employee> getAllEmployeesGroupedByDept(@PathVariable("id") int deptId) {
         return service.getAll(deptId);
     }
 
-    @GetMapping("/all")
+    @GetMapping("{id}/all")
     public Map<Integer, List<Employee>> getAllEmployeesGroupedByDept() {
         return service.getAllGroupedByDept();
+    }
+    @GetMapping("{id}salary/sum")
+    public Integer getSalarySum(@PathVariable("id") Integer id) {
+        return service.getSalary(id);
     }
 }

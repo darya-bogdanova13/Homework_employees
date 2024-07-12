@@ -50,4 +50,14 @@ public class DeptServiceImpl implements DeptService{
                 .stream()
                 .collect(Collectors.groupingBy(Employee::getDept));
     }
+
+    @Override
+    public Integer getSalary(Integer deptId) {
+        return employeeService.findAll()
+                .stream()
+                .filter(employee -> employee.getDept() == deptId)
+                .map(Employee::getSalary)
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
 }
