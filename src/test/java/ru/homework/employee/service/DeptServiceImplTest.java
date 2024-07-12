@@ -23,7 +23,7 @@ public class DeptServiceImplTest {
         add(new Employee("Алексей", "Корников", 1, 70000));
         add(new Employee("Константин", "Реунов", 1, 90000));
         add(new Employee("Андрей", "Постов", 2, 50000));
-        add(new Employee("Чугунов", "Сергей", 3, 50000));
+        add(new Employee("Чугунов1", "Сергей", 3, 50000));
     }};
 
     private final Map<String, Employee> employees = new HashMap<>();
