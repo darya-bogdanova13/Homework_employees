@@ -39,7 +39,7 @@ public class DeptController {
         return service.getAllGroupedByDept();
     }
     @GetMapping("{id}salary/sum")
-    public Integer getSalarySum(@PathVariable("id") Integer id) {
-        return service.getSalary(id);
+    public Integer getSalarySum(@PathVariable("id") int dept) {
+        return service.getSalary(dept);
     }
 }

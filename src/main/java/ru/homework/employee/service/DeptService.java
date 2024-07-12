@@ -16,5 +16,6 @@ public interface DeptService {
 
     Map<Integer, List<Employee>> getAllGroupedByDept();
 
-    Integer getSalary(Integer deptId);
+    int getSalary(int dept);
+
 }

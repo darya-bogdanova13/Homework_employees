@@ -52,7 +52,7 @@ public class DeptServiceImpl implements DeptService{
     }
 
     @Override
-    public Integer getSalary(Integer deptId) {
+    public int getSalary(int deptId) {
         return employeeService.findAll()
                 .stream()
                 .filter(employee -> employee.getDept() == deptId)
@@ -60,4 +60,5 @@ public class DeptServiceImpl implements DeptService{
                 .mapToInt(Integer::intValue)
                 .sum();
     }
+
 }
